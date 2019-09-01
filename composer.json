@@ -1,0 +1,70 @@
+{
+    "name": "antweb/yii2-web",
+    "description": "Yii2 Module",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Hui Yang",
+            "email": "chy1988@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "~2.0.0",
+		"inspirenmy/yii2-core" : "*",
+        "kartik-v/yii2-widget-switchinput": "*",
+		"kartik-v/yii2-grid": "*",
+        "kartik-v/yii2-builder": "*",
+        "kartik-v/yii2-widget-select2": "*",
+        "kartik-v/yii2-widget-datepicker": "*",
+        "kartik-v/yii2-widget-timepicker": "*",
+        "dmstr/yii2-adminlte-asset": "2.4.1",
+		"nepstor/yii2-datetime-compare-validator": "^2.0",
+        "intervention/image": "^2.1",
+		"inspirenmy/yii2-config": "*",
+        "yii2tech/config": "^1.0",
+		"rmrevin/yii2-fontawesome": "*",
+		"udokmeci/yii2-phone-validator" : "*",
+        "yii2tech/ar-softdelete": "^1.0",
+        "tuyakhov/yii2-notifications": "*",
+        "cebe/yii2-lifecycle-behavior": "^2.0",
+        "brussens/yii2-maintenance-mode": "0.2.6"
+	},
+    "require-dev": {
+        "yiisoft/yii2-codeception": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "codeception/codeception": "^3.0"
+	},
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+		{
+			"type": "composer",
+			"url": "http://packagist.antwebstudio.com"
+		}
+	],
+	"scripts": {
+		"post-install-cmd": "@setup",
+		"migrate-test" : "@php tests/bin/yii migrate --interactive=0 --migrationPath=@yii/rbac/migrations,@common/migrations/db,@tests/migrations/db",
+		"test" : [
+			"@setup", 
+			"@run-test"
+		],
+		"yii": "@php ./tests/bin/yii",
+		"setup": [
+			"@php ./tests/bin/yii module/enable category",
+			"@migrate-test"
+		],
+		"run-test" : "@php ./vendor/codeception/codeception/codecept run unit"
+	},
+    "autoload": {
+        "psr-4": {
+			"ant\\" : "src",
+			"tests\\" : "tests"
+		}
+    }
+}
