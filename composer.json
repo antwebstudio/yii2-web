@@ -29,6 +29,7 @@
         "yii2tech/ar-softdelete": "^1.0",
         "tuyakhov/yii2-notifications": "*",
         "cebe/yii2-lifecycle-behavior": "^2.0",
+        "nizsheanez/yii2-asset-converter": "^1.5",
         "brussens/yii2-maintenance-mode": "0.2.6"
 	},
     "require-dev": {
@@ -64,6 +65,7 @@
     "autoload": {
         "psr-4": {
 			"ant\\" : "src",
+			"common\\": "src",
 			"tests\\" : "tests"
 		}
     }
