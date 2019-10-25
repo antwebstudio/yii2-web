@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\counter\models;
+namespace ant\counter\models;
 
 use Yii;
 
@@ -29,7 +29,7 @@ class HitCounter extends \yii\db\ActiveRecord
 	
 	public function behaviors() {
 		return [
-			['class' => \common\behaviors\TimestampBehavior::className()],
+			['class' => \ant\behaviors\TimestampBehavior::className()],
 		];
 	}
 

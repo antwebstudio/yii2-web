@@ -1,8 +1,8 @@
 <?php
 
-namespace common\modules\counter\migrations\db;
+namespace ant\counter\migrations\db;
 
-use common\components\Migration;
+use ant\db\Migration;
 
 /**
  * Class M190412074602_create_hit_counter

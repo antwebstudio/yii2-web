@@ -1,8 +1,8 @@
 <?php
-namespace common\modules\counter\components;
+namespace ant\counter\components;
 
 use Yii;
-use common\modules\counter\models\HitCounter;
+use ant\counter\models\HitCounter;
 
 class CounterComponent extends \yii\base\Component {
 	public function addBulk(array $keys = null, $type = 'default') {

@@ -2,8 +2,7 @@
 
 return [
     'id' => 'counter',
-    'class' => \common\modules\counter\Module::className(),
+    'class' => \ant\counter\Module::className(),
     'isCoreModule' => false,
 	'depends' => [],
 ];
-?>

@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\counter;
+namespace ant\counter;
 
 /**
  * event module definition class

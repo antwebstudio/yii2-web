@@ -1,6 +1,6 @@
 <?php
 
-namespace common\modules\counter\controllers;
+namespace ant\counter\controllers;
 
 use yii\web\Controller;
 
