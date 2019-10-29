@@ -1,11 +1,11 @@
 <?php
-namespace backend\themes\adminlte\assets;
+namespace ant\themes\adminlte\assets;
 
 use yii\web\AssetBundle;
 
 class ThemeAsset extends AssetBundle
 {
-    public $sourcePath = '@backend/themes/adminlte/public';
+    public $sourcePath = '@vendor/antweb/yii2-web/src/themes/adminlte/public';
 
     //public $basePath = '@webroot/themes/event/public';
     //public $baseUrl = '@web/themes/event/public';
@@ -22,7 +22,7 @@ class ThemeAsset extends AssetBundle
         //'yii\bootstrap\BootstrapAsset',
         '\rmrevin\yii\fontawesome\AssetBundle',
 		//'\backend\assets\AppAsset',
-		'\backend\themes\adminlte\assets\AdminLtePluginAsset',
+		'\ant\themes\adminlte\assets\AdminLtePluginAsset',
 		//'\common\assets\StyleAsset\Asset',
     ];
 }

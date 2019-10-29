@@ -1,5 +1,5 @@
 <?php
-namespace backend\themes\adminlte\assets;
+namespace ant\themes\adminlte\assets;
 
 use yii\web\AssetBundle;
 

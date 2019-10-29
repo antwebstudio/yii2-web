@@ -426,7 +426,7 @@ use yii\helpers\Url;
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href= <?= url::to(['/user/setting/index'])  ?> class="btn btn-default btn-flat">Profile</a>
+                                <a href= <?= url::to(['/user/backend/setting/index'])  ?> class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(
