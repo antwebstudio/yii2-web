@@ -22,13 +22,8 @@
         "dmstr/yii2-adminlte-asset": "2.4.1",
 		"nepstor/yii2-datetime-compare-validator": "^2.0",
         "intervention/image": "^2.1",
-		"inspirenmy/yii2-config": "*",
-        "yii2tech/config": "^1.0",
 		"rmrevin/yii2-fontawesome": "*",
 		"udokmeci/yii2-phone-validator" : "*",
-        "yii2tech/ar-softdelete": "^1.0",
-        "tuyakhov/yii2-notifications": "*",
-        "cebe/yii2-lifecycle-behavior": "^2.0",
         "nizsheanez/yii2-asset-converter": "^1.5",
         "brussens/yii2-maintenance-mode": "0.2.6"
 	},
