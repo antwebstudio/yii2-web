@@ -11,6 +11,8 @@ class TinyMce extends \dosamigos\tinymce\TinyMce {
 		
 		$this->clientOptions['plugins'] = 'image';
 		$this->clientOptions['file_picker_types'] = 'file image media';
-		$this->clientOptions['file_picker_callback'] = \ant\file\widgets\ElFinder::getFilePickerCallback($this->fileFinder['url']);
+		if (class_exists('ant\file\widgets\ElFinder')) {
+			$this->clientOptions['file_picker_callback'] = \ant\file\widgets\ElFinder::getFilePickerCallback($this->fileFinder['url']);
+		}
 	}
 }

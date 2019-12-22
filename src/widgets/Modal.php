@@ -1,23 +1,27 @@
 <?php
 namespace ant\widgets;
 
+use Yii;
 use yii\helpers\Url;
 
-class Modal extends \yii\bootstrap\Modal {
+class Modal extends \yii\base\Widget {
     public $url;
-
-    public function init() {
-        if (isset($this->url)) {
-            $this->clientEvents['show.bs.modal'] = new \yii\web\JsExpression('function() {
-                var url = "'.Url::to($this->url).'";
-                $modalBody = $("#' . $this->id . '").find(".modal-body");
-                $modalBody.html("<div class=\"modal-loader\"></div>");
-                $modalBody.load(url, function() { 
-                
-                });
-            }');
-        }
-        parent::init();
-        
-    }
+	
+	public static function begin($config = [])
+	{
+		if (isset(Yii::$app->params['bsVersion']) && Yii::$app->params['bsVersion'] >= 4) {
+			return \ant\widgets\ModalBootstrap4::begin();
+		} else {
+			return \ant\widgets\ModalBootstrap3::begin();
+		}
+	}
+	
+	public static function end()
+	{
+		if (isset(Yii::$app->params['bsVersion']) && Yii::$app->params['bsVersion'] >= 4) {
+			return \ant\widgets\ModalBootstrap4::end();
+		} else {
+			return \ant\widgets\ModalBootstrap3::end();
+		}
+	}
 }
