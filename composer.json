@@ -20,11 +20,15 @@
         "kartik-v/yii2-widget-select2": "*",
         "kartik-v/yii2-widget-datepicker": "*",
         "kartik-v/yii2-widget-timepicker": "*",
+		"kartik-v/yii2-date-range": "*",
 		"nepstor/yii2-datetime-compare-validator": "^2.0",
         "intervention/image": "^2.1",
 		"rmrevin/yii2-fontawesome": "*",
 		"udokmeci/yii2-phone-validator" : "*",
         "nizsheanez/yii2-asset-converter": "^1.5",
+        "alexantr/yii2-elfinder": "^1.7@dev",
+        "alexantr/yii2-tinymce": "^1.0@dev",
+        "beaten-sect0r/yii2-flatpickr": "*",
         "brussens/yii2-maintenance-mode": "0.2.6"
 	},
     "require-dev": {
