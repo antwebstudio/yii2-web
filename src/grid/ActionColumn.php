@@ -15,6 +15,9 @@ class ActionColumn extends \yii\grid\ActionColumn {
     public static function dropdown($options) {
         $items = isset($options['items']) ? $options['items'] : [];
         $color = isset($options['color']) ? $options['color'] : 'secondary';
+		$label = isset($options['label']) ? $options['label'] : '';
+		$label = isset($options['icon']) ? Html::tag('span', '', ['class' => 'fa fa-fw fa-'.$options['icon']]).' '.$label : $label;
+		$encodeLabel = isset($options['encodeLabel']) ? $options['encodeLabel'] : false;
 
         foreach ($items as &$item) {
             if (isset($item['confirm'])) $item['linkOptions']['data']['confirm'] = $item['confirm'];
@@ -22,8 +25,9 @@ class ActionColumn extends \yii\grid\ActionColumn {
         }
 
         return \yii\bootstrap4\ButtonDropdown::widget([
-            'label' => isset($options['label']) ? $options['label'] : '',
+            'label' => $label,
             'split' => true,
+			'encodeLabel' => $encodeLabel,
             'tagName' => 'a',
             'buttonOptions' => [
                 //'onclick' => 'showBookingDetail("'.$model->encodedId.'")',
