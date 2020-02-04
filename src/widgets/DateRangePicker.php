@@ -33,9 +33,16 @@ class DateRangePicker extends \kartik\daterange\DateRangePicker {
 				if (valid === null) return false;
 				
 				function inRange(date, range) {
-					var start = new Date(range[0] + ' GMT' + date.format('Z'));
-					var end = new Date(range[1] + ' GMT' + date.format('Z'));
-					return date >= start && date <= end;
+					var start = range[0] !== null ? new Date(range[0] + ' GMT' + date.format('Z')) : range[0];
+					var end = range[1] !== null ? new Date(range[1] + ' GMT' + date.format('Z')) : range[1];
+					if (start !== null && end !== null) {
+						return date >= start && date <= end;
+					} else if (start !== null) {
+						return date >= start;
+					} else if (end !== null) {
+						return date <= end;
+					}
+					return false;
 				}
 				
 				for(var i = 0; i < valid.length; i++){

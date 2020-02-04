@@ -19,7 +19,7 @@ class ThemeAsset extends AssetBundle
 
     public $depends = [
         'yii\web\YiiAsset',
-        '\rmrevin\yii\fontawesome\AssetBundle',
-		'\ant\themes\adminlte3\assets\AdminLteAsset',
+		'ant\bootstrap4Extended\SassAsset',
+		'ant\themes\adminlte3\assets\AdminLteAsset',
     ];
 }

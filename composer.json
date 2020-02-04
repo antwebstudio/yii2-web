@@ -11,9 +11,11 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
+		"2amigos/yii2-tinymce-widget" : "*",
         "yiisoft/yii2": "~2.0.0",
 		"antweb/yii2-core" : "*",
 		"antweb/yii2-user" : "*",
+		"antweb/yii2-bootstrap4-extended" : "*",
         "kartik-v/yii2-widget-switchinput": "*",
 		"kartik-v/yii2-grid": "*",
         "kartik-v/yii2-builder": "*",
