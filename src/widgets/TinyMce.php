@@ -12,7 +12,7 @@ class TinyMce extends \dosamigos\tinymce\TinyMce {
 		$this->clientOptions = array_merge($this->clientOptions, [
 			'height' => 500,
 			'inline_styles' => false,
-			'paste_as_text' => true,
+			//'paste_as_text' => true,
 			//'paste_text_sticky' => true,
 			//'paste_text_sticky_default' => true,
 			'paste_preprocess' => new \yii\web\JsExpression('function(pl, o) {
