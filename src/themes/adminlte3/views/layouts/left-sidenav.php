@@ -12,7 +12,7 @@ $sideNavItems = isset($this->params['sidenav']) ? $this->params['sidenav'] : $si
 	<div class="row">
 		<?php if (isset($sideNavItems)): ?>
 			<div class="col-lg-3">
-				<div class="list-group list-group-border-0 mb-20">
+				<div class="list-group list-group-border-0 mb-5">
 					<?php foreach ($sideNavItems as $item): ?>
 						<?php if (!isset($item['visible']) || $item['visible']): ?>
 							<a href="<?= Url::to($item['url']) ?>" class="list-group-item <?= \Yii::$app->menu->isItemActive($item, $this->context->route) ? 'active' : '' ?>">

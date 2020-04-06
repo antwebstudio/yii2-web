@@ -17,18 +17,53 @@ class StickyBar extends \yii\base\Widget {
 		],
 	];
 	
+	public function init() {
+		echo $this->renderBegin();
+		ob_start();
+	}
+	
 	public function run() {
-		$this->buttons = Arr::merge($this->defaultButtons, $this->buttons);
+		$content = ob_get_clean();
 		
-		foreach ($this->buttonUrls as $name => $url) {
-			if (!isset($this->buttons[$name]['url'])) {
-				$this->buttons[$name]['url'] = $url;
+		if (isset($content)) {
+			echo $content; // Mobile version
+		} else {
+			$this->buttons = Arr::merge($this->defaultButtons, $this->buttons);
+			
+			foreach ($this->buttonUrls as $name => $url) {
+				if (!isset($this->buttons[$name]['url'])) {
+					$this->buttons[$name]['url'] = $url;
+				}
 			}
+			
+			echo $this->render('sticky-bar', [
+				'urls' => $this->buttonUrls,
+			]);
 		}
 		
-		return $this->render('sticky-bar', [
-			'urls' => $this->buttonUrls,
-		]);
+		echo $this->renderEnd();
+		
+		if (isset($content)) {
+			echo $this->renderDesktopVersionBegin();
+			echo $content; // Desktop version
+			echo $this->renderDesktopVersionEnd();
+		}
+	}
+	
+	public function renderBegin() {
+		return '<div class="fixed-bottom d-md-none">';
+	}
+	
+	public function renderEnd() {
+		return '</div>';
+	}
+	
+	public function renderDesktopVersionBegin() {
+		return '<div class="d-md-block d-none">';
+	}
+	
+	public function renderDesktopVersionEnd() {
+		return '</div>';
 	}
 	
 	public function renderButtons() {

@@ -38,9 +38,8 @@ $autohide = true;
 	<?php \ant\widgets\JsBlock::end() ?>
 <?php endif ?>
 
-<div class="fixed-bottom d-md-none">
+
 	<div class="row no-gutters">
 		<?= $this->context->renderButtons() ?>	
 		<a class="class3 link col-9 bg-share" href="<?= 'https://www.facebook.com/sharer/sharer.php?u='.Url::current([], true) ?>">分享</a>	
-	</div>	
-</div>
+	</div>
