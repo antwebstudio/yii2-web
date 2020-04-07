@@ -44,6 +44,12 @@ class SiteController extends Controller
             ],
         ];
     }
+	
+	public function actionLanguage($language = 'en') {
+		\Yii::$app->session['language'] = $language;
+		\Yii::$app->language = $language;
+		return $this->redirect(\Yii::$app->request->referrer);
+	}
 
     /**
      * Displays homepage.

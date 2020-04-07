@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
+use ant\language\widgets\LanguageDetector;
 
 //$appBundle = \backend\assets\AppAsset::register($this);
 //$adminLtePluginBundle = \backend\themes\adminlte\assets\AdminLtePluginAsset::register($this);
@@ -18,7 +19,9 @@ $renderParams =
 ];
 ?>
 <?php $this->beginContent('@app/views/layouts/_clear.php', ['body' => ['class' => 'hold-transition skin-black sidebar-mini layout-fixed']]) ?>
-
+	
+	<?= LanguageDetector::widget() ?>
+	
 	<div class="wrapper">
 
 		<?= $this->render('parts/_nav-bar.php', $renderParams); ?>
