@@ -3,17 +3,21 @@ namespace ant\grid;
 
 use Yii;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper as Arr;
 
 class ActionColumn extends \yii\grid\ActionColumn {
     const MESSAGE_DELETE_CONFIRM = 'Are you sure you want to delete this item?';
 
+	public $contentOptions = ['class' => 'text-nowrap'];
+	public $buttonOptions = ['class' => 'btn btn-dark btn-sm'];
+	
     public $iconMap = [
         'pencil' => 'edit',
         'eye-open' => 'eye',
     ];
 
     public static function dropdown($options) {
-        $items = isset($options['items']) ? $options['items'] : [];
+        $items = Arr::remove($options, 'items');
         $color = isset($options['color']) ? $options['color'] : 'secondary';
 		$label = isset($options['label']) ? $options['label'] : '';
 		$label = isset($options['icon']) ? Html::tag('span', '', ['class' => 'fa fa-fw fa-'.$options['icon']]).' '.$label : $label;
@@ -29,14 +33,14 @@ class ActionColumn extends \yii\grid\ActionColumn {
             'split' => true,
 			'encodeLabel' => $encodeLabel,
             'tagName' => 'a',
-            'buttonOptions' => [
+            'buttonOptions' => Arr::merge(isset($options['options']) ? $options['options'] : [], [
                 //'onclick' => 'showBookingDetail("'.$model->encodedId.'")',
                 //'data-toggle' => 'modal',
                 //'data-target' => '#'.$modal2->id,
                 //'href' => '#'.$modal2->id,
                 'href' => isset($options['url']) ? $options['url'] : '',
                 'class' => 'btn-sm btn btn-'.$color,
-            ],
+            ]),
             'dropdown' => [
                 'items' => $items,
             ],

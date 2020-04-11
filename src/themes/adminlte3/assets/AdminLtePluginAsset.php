@@ -13,8 +13,8 @@ class AdminLtePluginAsset extends AssetBundle
 		'jqvmap/jquery.vmap.min.js',
 		'jqvmap/maps/jquery.vmap.usa.js',
 		'jquery-knob/jquery.knob.min.js',
-		'moment/moment.min.js',
-		'daterangepicker/daterangepicker.js',
+		//'moment/moment.min.js',
+		//'daterangepicker/daterangepicker.js',
 		'tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js',
 		'summernote/summernote-bs4.min.js',
 		'overlayScrollbars/js/jquery.overlayScrollbars.min.js',
@@ -28,7 +28,7 @@ class AdminLtePluginAsset extends AssetBundle
 		'icheck-bootstrap/icheck-bootstrap.min.css',
 		'jqvmap/jqvmap.min.css',
 		'overlayScrollbars/css/OverlayScrollbars.min.css',
-		'daterangepicker/daterangepicker.css',
+		//'daterangepicker/daterangepicker.css',
 		'summernote/summernote-bs4.css',
     ];
 
