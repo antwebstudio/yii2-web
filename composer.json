@@ -33,7 +33,9 @@
         "alexantr/yii2-elfinder": "^1.7@dev",
         "alexantr/yii2-tinymce": "^1.0@dev",
         "beaten-sect0r/yii2-flatpickr": "*",
-        "brussens/yii2-maintenance-mode": "0.2.6"
+		"bower-asset/lightgallery": "*",
+        "brussens/yii2-maintenance-mode": "0.2.6",
+        "ruturajmaniyar/yii2-flash-toastr": "dev-master"
 	},
     "require-dev": {
         "yiisoft/yii2-codeception": "~2.0.0",

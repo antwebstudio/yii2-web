@@ -9,6 +9,8 @@ $sideNavItems = isset($this->params['sidenav']) ? $this->params['sidenav'] : $si
 ?>
 <?php $this->beginContent('@app/views/layouts/base.php') ?>
 <div class="layout-left-sidenav container">
+	<?= $this->blocks['sidebar-top'] ?? '' ?>
+	
 	<div class="row">
 		<?php if (isset($sideNavItems)): ?>
 			<div class="col-lg-3">

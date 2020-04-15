@@ -78,7 +78,7 @@ array_unshift($items, [
 				<!-- Menu Footer-->
 				<li class="user-footer">
 					<div class="float-left">
-						<a href= <?= Url::to(['/user/backend/setting/index'])  ?> class="btn btn-default btn-flat">Profile</a>
+						<a href= <?= Url::to(['/user/backend/setting/password'])  ?> class="btn btn-default btn-flat">Change Password</a>
 					</div>
 					<div class="float-right">
 						<?= Html::a('Sign out', ['/site/logout'], ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']) ?>

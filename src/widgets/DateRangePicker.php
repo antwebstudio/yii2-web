@@ -9,8 +9,9 @@ use ant\widgets\assets\DateRangePickerAsset;
 
 class DateRangePicker extends \kartik\daterange\DateRangePicker {
 	const RANGE_BY_MONTH = 'byMonth';
+	const RANGE_FUTURE = 'future';
 	
-	public $presetDropdown = false;
+	public $presetDropdown = true;
 	public $hideInput = true;
 	public $autoUpdateOnInit = false;
 	public $convertFormat = true;
@@ -19,19 +20,31 @@ class DateRangePicker extends \kartik\daterange\DateRangePicker {
 	
 	public $clearButton = true;
 	
-	public function run() {
+	/*public function run() {
         $this->initSettings();
+		//$this->view->registerCss('.kv-drp-dropdown .kv-clear { display:none; }');
+		
 		if ($this->clearButton) {
-			return Html::tag('div', $this->renderInput().$this->renderClearButton(), ['class' => 'input-group']);
+			return Html::tag('div', $this->renderInput().$this->renderClearButton(), ['class' => 'input-group active-readonly']);
 		} else {
 			return $this->renderInput();
 		}
-	}
+	}*/
 	
 	public function init() {
-		$this->autoUpdateOnInit = true;
-		$this->pluginOptions = [
-			'isInvalidDate' => new \yii\web\JsExpression("function(date) {
+		parent::init();
+        $css = $this->useWithAddon && !$this->presetDropdown && !$this->hideInput ? ' input-group' : '';
+		Html::addCssClass($this->containerOptions, 'kv-drp-container active-readonly' . $css);
+		$this->initPluginOptions();
+	}
+	
+	protected function initPluginOptions() {
+		if (!isset($this->pluginOptions['locale']['format'])) {
+			$this->pluginOptions['locale']['format'] = 'Y-m-d';
+		}
+		
+		if (isset($this->validDate) && !isset($this->pluginOptions['isInvalidDate'])) {
+			$this->pluginOptions['isInvalidDate'] = new \yii\web\JsExpression("function(date) {
 				var valid = ".json_encode($this->normalizeValidDate($this->validDate)).";
 				if (valid === null) return false;
 				
@@ -58,16 +71,12 @@ class DateRangePicker extends \kartik\daterange\DateRangePicker {
 					}
 				}
 				return true;
-			}"),
-			'timePicker' => false,
-			//'timePickerIncrement' => 30,
-			'locale' => [
-				'format' => 'Y-m-d',
-			],
-			'ranges' => $this->getDateTimeRangePreset($this->rangePreset),
-			'allowClear' => true,
-		];
-		parent::init();
+			}");
+		}
+		
+		if (isset($this->rangePreset) && !isset($this->pluginOptions['ranges'])) {
+			$this->pluginOptions['ranges'] = $this->getDateTimeRangePreset($this->rangePreset);
+		}
 	}
 	
 	protected function renderClearButton() {
@@ -86,7 +95,7 @@ class DateRangePicker extends \kartik\daterange\DateRangePicker {
 				});
 			');
 			
-			return Html::tag('div', Html::button('<i class="fa fa-times"></i>', ['id' => $buttonId, 'class' => 'btn btn-default']), ['class' => 'input-group-btn']);
+			return Html::tag('div', Html::button('<i class="fa fa-times"></i>', ['id' => $buttonId, 'class' => 'btn btn-default']), ['class' => 'input-group-btn input-group-append']);
 		}
 	}
 	
@@ -166,7 +175,7 @@ JS;
         $this->registerPlugin($this->pluginName, $id, null, $this->callback);
     }
 	
-	protected function normalizeValidDate() {
+	/*protected function normalizeValidDate() {
 		if (!isset($this->validDate)) return null;
 		
 		$normalized = [];
@@ -178,7 +187,7 @@ JS;
 			}
 		}
 		return $normalized;
-	}
+	}*/
 	
 	protected function getDateTimeRangePreset($preset = null) {
 		if ($preset == self::RANGE_BY_MONTH) {
@@ -195,6 +204,17 @@ JS;
 				Yii::t('kvdrp', "9 Month Ago") => ["moment().subtract(9, 'month').startOf('month')", "moment().subtract(9, 'month').endOf('month')"],
 				Yii::t('kvdrp', "10 Month Ago") => ["moment().subtract(10, 'month').startOf('month')", "moment().subtract(10, 'month').endOf('month')"],
 			];
+		} else if ($preset == self::RANGE_FUTURE) {
+			return [
+				Yii::t('kvdrp', "Today") => ["moment().startOf('day')", "moment()"],
+				Yii::t('kvdrp', "Tomorrow") => ["moment().startOf('day').add(1,'days')", "moment().endOf('day').add(1,'days')"],
+				Yii::t('kvdrp', "Next {n} Days", ['n' => 7]) => ["moment()", "moment().startOf('day').add(6, 'days')"],
+				Yii::t('kvdrp', "Next {n} Days", ['n' => 30]) => ["moment()", "moment().startOf('day').add(29, 'days')"],
+				Yii::t('kvdrp', "This Month") => ["moment().startOf('month')", "moment().endOf('month')"],
+				Yii::t('kvdrp', "Next Month") => ["moment().add(1, 'month').startOf('month')", "moment().add(1, 'month').endOf('month')"],
+				Yii::t('kvdrp', "This Year") => ["moment().startOf('year')", "moment().endOf('year')"],
+				Yii::t('kvdrp', "Next Year") => ["moment().add(1, 'year').startOf('year')", "moment().add(1, 'year').endOf('year')"],
+			]; 
 		}
 		
         return [

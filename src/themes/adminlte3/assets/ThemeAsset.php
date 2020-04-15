@@ -11,7 +11,8 @@ class ThemeAsset extends AssetBundle
     //public $baseUrl = '@web/themes/event/public';
 
     public $css = [
-        //'css/site.css',
+        'css/style.css',
+		'https://cdnjs.cloudflare.com/ajax/libs/awesome-bootstrap-checkbox/1.0.2/awesome-bootstrap-checkbox.min.css',
     ];
     
     public $js = [

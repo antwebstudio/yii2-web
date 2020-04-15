@@ -22,7 +22,7 @@ class TinyMce extends \dosamigos\tinymce\TinyMce {
 					//.replace(/(.*?)<br\s?\/?>/gi,\'<p>$1</p>\')
 					.replace(/(.*?)<br\s?\/?>/gi,\'<p>$1</p>\')
 			}'),
-			'plugins' => 'paste, image, media, fullscreen'.(YII_DEBUG ? ', code' : ''),
+			'plugins' => 'paste, image, media, fullscreen'.(YII_DEBUG || \Yii::$app->user->can('superadmin') ? ', code' : ''),
 			'file_picker_types' => 'file image media',
 			'media_dimensions' => false,
 			'image_dimensions' => false,
