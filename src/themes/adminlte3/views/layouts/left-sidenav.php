@@ -1,7 +1,6 @@
 <?php
 use yii\helpers\Url;
 use yii\helpers\Html;
-use kartik\sidenav\SideNav;
 
 $sideNavItems = isset($this->params['sideNav']['items']) ? $this->params['sideNav']['items'] : null;
 $sideNavItems = isset($this->params['sidenav']) ? $this->params['sidenav'] : $sideNavItems;
@@ -12,7 +11,11 @@ $sideNavItems = isset($this->params['sidenav']) ? $this->params['sidenav'] : $si
 	<?= $this->blocks['sidebar-top'] ?? '' ?>
 	
 	<div class="row">
-		<?php if (isset($sideNavItems)): ?>
+		<?php if (isset($this->blocks['sidebar'])): ?>
+			<div class="col-lg-3">
+				<?= $this->blocks['sidebar'] ?>
+			</div>
+		<?php elseif (isset($sideNavItems)): ?>
 			<div class="col-lg-3">
 				<div class="list-group list-group-border-0 mb-5">
 					<?php foreach ($sideNavItems as $item): ?>

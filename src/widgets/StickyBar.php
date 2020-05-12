@@ -8,6 +8,7 @@ class StickyBar extends \yii\base\Widget {
 	public $template = '{facebook} {share}';
 	public $buttonUrls;
 	public $buttons = [];
+	public $autoBottomMargin = true;
 	
 	public $defaultButtons = [
 		'facebook' => [
@@ -18,6 +19,12 @@ class StickyBar extends \yii\base\Widget {
 	];
 	
 	public function init() {
+		if ($this->autoBottomMargin) {
+			$this->view->registerJs('
+				var height = document.querySelector("#'.$this->id.'").offsetHeight;
+				document.querySelector("body").style.marginBottom = height + "px";
+			');
+		}
 		echo $this->renderBegin();
 		ob_start();
 	}
@@ -51,7 +58,7 @@ class StickyBar extends \yii\base\Widget {
 	}
 	
 	public function renderBegin() {
-		return '<div class="fixed-bottom d-md-none">';
+		return '<div id="'.$this->id.'" class="fixed-bottom d-md-none">';
 	}
 	
 	public function renderEnd() {

@@ -175,7 +175,7 @@ JS;
         $this->registerPlugin($this->pluginName, $id, null, $this->callback);
     }
 	
-	/*protected function normalizeValidDate() {
+	protected function normalizeValidDate() {
 		if (!isset($this->validDate)) return null;
 		
 		$normalized = [];
@@ -187,7 +187,7 @@ JS;
 			}
 		}
 		return $normalized;
-	}*/
+	}
 	
 	protected function getDateTimeRangePreset($preset = null) {
 		if ($preset == self::RANGE_BY_MONTH) {

@@ -1,0 +1,30 @@
+================
+ BLOCK
+================
+header
+page
+	sidebar
+		sidenav
+	page-header		
+		nav
+			nav-left
+			nav-right
+	content
+		content-header
+			alert
+			content-header-buttons
+		panel
+			panel-content
+		content-footer
+	
+	page-footer
+footer
+
+
+================
+ LAYOUT
+================
+_clear
+	base
+		left-sidebar / right-sidebar / one-column
+			main

@@ -57,6 +57,11 @@ array_unshift($items, [
     <!-- Right navbar links -->
 	
 	<div class="navbar-nav ml-auto">
+	</div>
+	
+	<?= $this->render('_nav-bar-right') ?>
+	
+	<div class="navbar-nav">
 		<!-- User Account: style can be found in dropdown.less -->
 
 		<div class="dropdown user user-menu nav-item">
