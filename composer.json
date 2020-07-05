@@ -29,7 +29,7 @@
         "intervention/image": "^2.1",
 		"rmrevin/yii2-fontawesome": "*",
 		"udokmeci/yii2-phone-validator" : "*",
-        "nizsheanez/yii2-asset-converter": "^1.5",
+        "nizsheanez/yii2-asset-converter": "^2.0",
         "alexantr/yii2-elfinder": "^1.7@dev",
         "alexantr/yii2-tinymce": "^1.0@dev",
         "beaten-sect0r/yii2-flatpickr": "*",
