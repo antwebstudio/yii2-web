@@ -3,6 +3,7 @@
 namespace ant\stat\models;
 
 use Yii;
+use ant\stat\models\query\VisitQuery;
 
 /**
  * This is the model class for table "tw_stat_model_visit".
@@ -25,10 +26,21 @@ class Visit extends \yii\db\ActiveRecord
     {
         return '{{%stat_model_visit}}';
     }
+
+    public static function normalizeKey($key) {
+		if (isset($key)) {
+			asort($key);
+			return json_encode($key);
+		}
+    }
+    
+    public static function find() {
+        return new VisitQuery(get_called_class());
+    }
 	
 	public function behaviors() {
 		return [
-			['class' => \ant\behaviors\TimestampBehavior::className()],
+			['class' => \ant\behaviors\TimestampBehavior::class],
 		];
 	}
 

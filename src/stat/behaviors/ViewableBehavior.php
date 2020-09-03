@@ -17,9 +17,9 @@ class ViewableBehavior extends \yii\base\Behavior {
         $this->requestCookies = Yii::$app->request->cookies;
 	}
 	
-	public function hit() {
+	public function hit($key = null) {
 		if ($this->shouldCount($this->owner)) {
-			$visit = $this->getVisitRecord($this->owner);
+			$visit = $this->getVisitRecord($this->owner, $key);
 			$visit->updateCounters(['unique_visit' => 1]);
 		}
 	}
@@ -44,11 +44,16 @@ class ViewableBehavior extends \yii\base\Behavior {
 	protected function getCookieKey($model) {
 		return self::COOKIES_NAME.'_'.ModelClass::getClassId($model).'_'.$model->id;
 	}
+
+	protected function normalizeKey($key) {
+		return Visit::normalizeKey($key);
+	}
 	
-	protected function getVisitRecord($model) {
+	protected function getVisitRecord($model, $key = null) {
 		$visit = Visit::find()->andWhere([
 			'model_id' => $model->id,
 			'model_class_id' => ModelClass::getClassId($model),
+			'key' => $this->normalizeKey($key),
 		])->one();
 		
 		if (!isset($visit)) {
@@ -56,6 +61,7 @@ class ViewableBehavior extends \yii\base\Behavior {
 			$visit->attributes = [
 				'model_id' => $model->id,
 				'model_class_id' => ModelClass::getClassId($model),
+				'key' => $this->normalizeKey($key),
 			];
 			if (!$visit->save()) throw new \Exception(print_r($visit->errors, 1));
 		}
