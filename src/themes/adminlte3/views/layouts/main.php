@@ -1,10 +1,9 @@
 <?php
 /* @var $this \yii\web\View */
+/* @var $content string */
 use yii\helpers\ArrayHelper;
 use yii\widgets\Breadcrumbs;
-
-use common\rbac\Permission;
-/* @var $content string */
+use ant\widgets\Tabs;
 ?>
 <?php $this->beginContent('@app/views/layouts/base.php') ?>
 	<?php if (isset($this->blocks['content-header-buttons'])): ?>
@@ -20,6 +19,10 @@ use common\rbac\Permission;
 	<?php endif ?>
 	
 	<?= \ant\themes\adminlte3\widgets\Alert::widget() ?>
+
+	<?= Tabs::widget([
+		'items' => Yii::$app->menu->getMenu(Yii::$app->request->get('tab')),
+	]) ?>
 	
 	<?= $content ?>
 <?php $this->endContent() ?>
