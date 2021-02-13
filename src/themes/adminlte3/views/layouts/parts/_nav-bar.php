@@ -64,33 +64,58 @@ array_unshift($items, [
 	<div class="navbar-nav">
 		<!-- User Account: style can be found in dropdown.less -->
 
-		<div class="dropdown user user-menu nav-item">
-			<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-				<img src="<?= Yii::$app->user->identity->getAvatar($themeBaseURL . '/images/boy.png') ?>" class="user-image" alt="User Image"/>
-				<span class="hidden-xs"><?= Yii::$app->user->identity->username ?></span>
-			</a>
-			<ul class="dropdown-menu dropdown-menu-right">
-				<!-- User image -->
-				<li class="user-header">
-					<img src="<?= Yii::$app->user->identity->getAvatar($themeBaseURL . '/images/boy.png') ?>" class="img-circle" alt="User Image"/>
-					<p>
-						<?= Yii::$app->user->identity->username ?> - <?= implode(', ', ArrayHelper::map(Yii::$app->user->identity->roles, 'name', 'name')) ?>
-						<?php /*
-						<small>Member since Nov. 2012</small>
-						*/?>
-					</p>
-				</li>
-				<!-- Menu Footer-->
-				<li class="user-footer">
-					<div class="float-left">
-						<a href= <?= Url::to(['/user/backend/setting/password'])  ?> class="btn btn-default btn-flat">Change Password</a>
-					</div>
-					<div class="float-right">
-						<?= Html::a('Sign out', ['/site/logout'], ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']) ?>
-					</div>
-				</li>
-			</ul>
-		</div>
+    <?php if ($new ?? false): ?>
+      <div class="navbar-nav">
+        <!-- User Account: style can be found in dropdown.less -->
+        
+        <div class="dropdown user user-menu nav-item">
+          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+            <img src="<?= Yii::$app->user->identity->getAvatar($themeBaseURL . '/images/boy.png') ?>" class="user-image" alt="User Image"/>
+            <span class="hidden-xs"><?= Yii::$app->user->identity->username ?></span>
+          </a>
+          
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+
+              <a target="_blank" href= <?= Yii::$app->frontendUrlManager->createAbsoluteUrl(['/']) ?> class="dropdown-item">View Website</a>
+              
+              <a href= <?= Url::to(['/user/backend/setting/password'])  ?> class="dropdown-item">Change Password</a>
+
+              <div class="dropdown-divider"></div>
+
+              <?= Html::a('Sign out', ['/site/logout'], ['data-method' => 'post', 'class' => 'dropdown-item']) ?>
+            </div>
+        </div>
+      </div>
+
+    <?php else: ?>
+      <div class="dropdown user user-menu nav-item">
+        <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+          <img src="<?= Yii::$app->user->identity->getAvatar($themeBaseURL . '/images/boy.png') ?>" class="user-image" alt="User Image"/>
+          <span class="hidden-xs"><?= Yii::$app->user->identity->username ?></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <!-- User image -->
+          <li class="user-header">
+            <img src="<?= Yii::$app->user->identity->getAvatar($themeBaseURL . '/images/boy.png') ?>" class="img-circle" alt="User Image"/>
+            <p>
+              <?= Yii::$app->user->identity->username ?> - <?= implode(', ', ArrayHelper::map(Yii::$app->user->identity->roles, 'name', 'name')) ?>
+              <?php /*
+              <small>Member since Nov. 2012</small>
+              */?>
+            </p>
+          </li>
+          <!-- Menu Footer-->
+          <li class="user-footer">
+            <div class="float-left">
+              <a href= <?= Url::to(['/user/backend/setting/password'])  ?> class="btn btn-default btn-flat">Change Password</a>
+            </div>
+            <div class="float-right">
+              <?= Html::a('Sign out', ['/site/logout'], ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']) ?>
+            </div>
+          </li>
+        </ul>
+      </div>
+    <?php endif ?>
 	</div>
 		
 	<?php /*

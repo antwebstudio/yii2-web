@@ -16,6 +16,7 @@ $renderParams =
 [
     'themeBaseURL' => $this->theme->baseUrl,
     'adminlteBaseUrl' => Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist'),
+	'new' => true,
 ];
 ?>
 <?php $this->beginContent('@app/views/layouts/_clear.php', ['body' => ['class' => 'hold-transition skin-black sidebar-mini layout-fixed']]) ?>
